@@ -8,14 +8,24 @@ use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        // ミドルウェア：アクセス認証
+        // ログインしてるユーザ、表示ページのみは全員閲覧可
+        $this->middleware('auth', ['except' => 'show']);
+    }
 
     public function show(User $user)
     {
+        // UserPolicyを呼び出し
+        $this->authorize('update', $user);
         return view('users.show', compact('user'));
     }
 
     public function edit(User $user)
     {
+        // UserPolicyを呼び出し
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
