@@ -17,8 +17,6 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        // UserPolicyを呼び出し
-        $this->authorize('update', $user);
         return view('users.show', compact('user'));
     }
 
@@ -31,6 +29,8 @@ class UsersController extends Controller
 
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
+        // UserPolicyを呼び出し
+        $this->authorize('update', $user);
         $data = $request->all();
         if($request->avatar)
         {
