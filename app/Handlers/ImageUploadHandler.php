@@ -22,7 +22,7 @@ class ImageUploadHandler
         // ファイルの拡張子を取得
         $extension = strtolower($file->getClientOriginalExtension()) ?: 'png';
         // サーバーに保存するファイル名を生成
-        $file_name = $file_prefix . '_' . time() . str_random(10) . $extension;
+        $file_name = $file_prefix . '_' . time() . str_random(10) . '.' .$extension;
         // アップロード許可する拡張子かどうかチェック
         if(! in_array($extension,$this->allowed_ext))
         {
