@@ -16,8 +16,8 @@
 
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">更新順</a></li>
-                        <li role="presentation"><a href="#">作成順</a></li>
+                        <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">更新順</a></li>
+                        <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">作成順</a></li>
                     </ul>
                 </div>
 
